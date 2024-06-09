@@ -2,6 +2,22 @@ export const getTravelerById = (travelersID, travelersArray) => {
     return travelersArray.find(user => user.id === travelersID);
 }
 
+export const calculateTotalAmount = (trips, currentYear, destinationsData) => {
+    let totalAmount = 0;
+
+    trips.forEach(trip => {
+        const tripDate = new Date(trip.date);
+        const tripYear = tripDate.getFullYear();
+        if (tripYear === currentYear && trip.status === 'approved') {
+            const destination = destinationsData.destinations.find(dest => dest.id === trip.destinationID);
+            totalAmount += (trip.duration * destination.estimatedLodgingCostPerDay);
+            totalAmount += (trip.travelers * destination.estimatedFlightCostPerPerson);
+        }
+    });
+
+    return totalAmount;
+};
+
 export const findTravelersTrips = (userId, trips) => {
     const past = [];
     const upcoming = [];

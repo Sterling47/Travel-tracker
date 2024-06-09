@@ -1,3 +1,5 @@
+import { calculateTotalAmount } from "./travelerFunctions";
+
 export const renderTrips = (trips, container, destinationsData) => {
     let totalAmount = 0;
     const currentDate = new Date('2022/06/12');
@@ -18,10 +20,7 @@ export const renderTrips = (trips, container, destinationsData) => {
         `;
         container.appendChild(tripElement);
         console.log('trip duration::', trip.duration)  
-        if (trip.status === 'approved' && tripYear === currentYear) {
-            totalAmount += (trip.duration * destination.estimatedLodgingCostPerDay) 
-            totalAmount+= (trip.travelers * destination.estimatedFlightCostPerPerson);
-        }
+        totalAmount = calculateTotalAmount(trips, currentYear, destinationsData) 
     });
 
     return totalAmount;
