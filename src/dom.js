@@ -15,10 +15,9 @@ export const renderTrips = (trips, container, destinationsData) => {
         `;
         container.appendChild(tripElement);
         console.log('trip duration::', trip.duration)  
-        console.log() 
         if (trip.status === 'approved') {
-            totalAmount += (trip.duration * destination.estimatedLodgingCostPerDay) +
-                (trip.travelers * destination.estimatedFlightCostPerPerson);
+            totalAmount += (trip.duration * destination.estimatedLodgingCostPerDay) 
+            totalAmount += (trip.travelers * destination.estimatedFlightCostPerPerson);
         }
     });
 
