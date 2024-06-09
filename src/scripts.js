@@ -12,9 +12,13 @@ import { findTravelersTrips } from './travelerFunctions';
 import { renderTrips } from './dom';
 
 document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
     const dashboard = document.getElementById('dashboard');
     const userIdElement = document.getElementById('user-id');
     const totalAmountElement = document.getElementById('total-amount');
+    const travelForm = document.querySelector('.form-card')
 
     loginForm.addEventListener('submit', (event) => {
         event.preventDefault();
