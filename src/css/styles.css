@@ -1,10 +1,17 @@
 
 body, main {
-  background: white;
+  background-image: url('/src/images/bgImg2.jpg');
+  background-size: cover;
+  background-position: center;
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
+  font-family: 'Prompt';
+}
+
+h1, h2 {
+  margin: 0;
 }
 
 main {
@@ -16,15 +23,89 @@ main {
 .container {
   width: 90%;
   height: 90%;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  
+  border-radius: .6rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
 }
 
+.login-page {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+}
+
+.login-form{
+  margin: 2rem;
+}
+
 .card {
-  width: 25rem;
-  height: 20rem;
-  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 45%;
+  height: 95%;
+  background-color: rgba(255, 255, 255, .85);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: .6rem;
+  margin: 2rem;
+  overflow: auto;
+}
+.trip-section {
+  /* border: 2px solid rebeccapurple; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 80%;
+  padding: 2rem;
+}
+
+.trip-bar {
+  /* border: 2px solid rgb(210, 21, 0); */
+  padding: 2rem;
+  margin: 1rem;
+}
+
+#past-trips {
+  display: flex;
+  flex-wrap: nowrap; /* Prevent wrapping to next line */
+  border: 2px solid red;
+  height: 19.3rem;
+  width: 80%;
+}
+
+.img-bar {
+  /* border: 2px solid yellowgreen; */
+  height: 12rem;
+  display: flex;
+  flex-direction: row;
+  margin: 1rem; 
+}
+
+.destination-img {
+  height: 8rem;
+  width: 8rem;
+ 
+}
+
+
+/* FORM STYLES */
+
+.form-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 25%;
+  height: 55%;
+  background-color: rgba(255, 255, 255, .85);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: .6rem;
+  margin: 2rem;
+  overflow: auto;
+}
+
+.hidden {
+  display: none;
 }
