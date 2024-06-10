@@ -9,7 +9,7 @@ import './images/turing-logo.png';
 
 import { fetchDestinations, fetchTripsData, submitNewTrip } from './apiCalls';
 import { findTravelersTrips } from './travelerFunctions';
-import { destinationOptions, renderTrips } from './dom';
+import { destinationOptions, displayTotalEstimate, renderTrips } from './dom';
 
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('login-form');
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const totalAmountElement = document.getElementById('total-amount');
     const travelForm = document.querySelector('.form-card');
     const newTripForm = document.querySelector('.new-trip-form');
-
+    const estimateButton = document.querySelector('.estimate-bttn')
     let userId;
     let destinationsData;
 
@@ -50,6 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     newTripForm.addEventListener('submit', (e) => submitNewTrip(e, Number(userId), destinationsData)); // Pass destinationsData to submitNewTrip
+    estimateButton.addEventListener('click', e => displayTotalEstimate(e, destinationsData))
+    
+
 
     function fetchTravelersData(userId) {
         Promise.all([fetchTripsData(), fetchDestinations()])
