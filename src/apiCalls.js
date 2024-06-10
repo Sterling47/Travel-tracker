@@ -48,15 +48,15 @@ export const submitNewTrip = (e, userId, destinationsData) => {
     const newTripObj = {
         id: Date.now(),
         userID: userId, 
-        destinationID: Number(formData.get('destinations-list')), 
-        travelers: Number(formData.get('num-of-travelers')), 
-        date: formData.get('trip-date').replace(/-/g, '/'),
-        duration: Number(formData.get('duration')), 
+        destinationID: Number(formElement.querySelector('#destinations-list').value), 
+        travelers: Number(formElement.querySelector('#num-of-travelers').value), 
+        date: formElement.querySelector('#trip-date').value.replace(/-/g, '/'),
+        duration: Number(formElement.querySelector('#duration').value), 
         status: 'pending',
         suggestedActivities: ['activities']
     };
 
-    console.log('newTRIPOBJ:::::',newTripObj);
+    // console.log('newTRIPOBJ:::::',newTripObj);
     bookNewTrip(newTripObj)
         .then(data => displayNewPendingTrip(data, destinationsData))
         .catch(error => {
