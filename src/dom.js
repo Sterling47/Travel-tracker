@@ -1,4 +1,4 @@
-import { calculateTotalAmount } from "./travelerFunctions";
+import { calculateTotalAmount, calculateTripEstimate} from "./travelerFunctions";
 
 export const renderTrips = (trips, container, destinationsData) => {
     let totalAmount = 0;
@@ -8,7 +8,6 @@ export const renderTrips = (trips, container, destinationsData) => {
         const destination = destinationsData.destinations.find(dest => dest.id === trip.destinationID);
         const tripDate = new Date(trip.date)
         const tripYear = tripDate.getFullYear();
-        console.log('destination:::', destination)
         const tripElement = document.createElement('div');
         tripElement.classList.add('img-bar')
         tripElement.innerHTML = `
@@ -19,7 +18,6 @@ export const renderTrips = (trips, container, destinationsData) => {
         </div>
         `;
         container.appendChild(tripElement);
-        console.log('trip duration::', trip.duration)  
         totalAmount = calculateTotalAmount(trips, currentYear, destinationsData) 
     });
 
@@ -28,10 +26,10 @@ export const renderTrips = (trips, container, destinationsData) => {
 
 export const displayNewPendingTrip = (data, destinationsData) => {
     const pending = document.getElementById('pending-trips');
-    console.log(destinationsData)
-    console.log('data2', data)
+    // console.log(destinationsData)
+    // console.log('data2', data)
     const destination = destinationsData.destinations.find(dest => dest.id === data.newTrip.destinationID);
-    console.log("dest data", destination)
+    // console.log("dest data", destination)
     const tripElement = document.createElement('div')
     tripElement.classList.add('img-bar')
     tripElement.innerHTML = `
@@ -43,7 +41,6 @@ export const displayNewPendingTrip = (data, destinationsData) => {
     `;
 
     pending.appendChild(tripElement)
-    console.log('trying::', data);
 }
 
 export function destinationOptions(destinationsData) {
@@ -54,4 +51,22 @@ export function destinationOptions(destinationsData) {
         option.text = destination.destination;
         destinationSelect.appendChild(option);
     });
+}
+    
+
+export const displayTotalEstimate = (e, destinationsData) => {
+    e.preventDefault();
+    const estimateBox = document.querySelector('.estimate-box')
+    const destinationId = Number(document.getElementById('destinations-list').value);
+    const numOfTravelers = Number(document.getElementById('num-of-travelers').value);
+    const duration = Number(document.getElementById('duration').value);
+    const selectedDestination = destinationsData.destinations.find(dest => dest.id === destinationId);
+
+    const estimate = calculateTripEstimate(selectedDestination, numOfTravelers, duration);
+console.log("estimate:::", estimate)
+
+    estimateBox.innerHTML =`
+    <p>Total estimate is for this trip: $${estimate} </p>
+    `
+
 }
