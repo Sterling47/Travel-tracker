@@ -25,3 +25,11 @@ export const renderTrips = (trips, container, destinationsData) => {
 
     return totalAmount;
 };
+
+ export const displayNewPendingTrip = (data) => {
+    const pending = document.getElementById('pending-trips')
+    pending.innerHTML `
+        <h2>your post is on the way</h2>
+        <img src='${data.image}'>
+    `
+}
