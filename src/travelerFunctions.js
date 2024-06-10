@@ -42,3 +42,15 @@ export const findTravelersTrips = (userId, trips) => {
 
     return { past, upcoming, pending };
 }
+
+export const calculateTripEstimate = (destination, numOfTravelers, duration) => {   
+    const lodgingCostPerDay = destination.estimatedLodgingCostPerDay
+    const flightCostPerPerson = destination.estimatedFlightCostPerPerson
+
+    const totalLodgingCost = lodgingCostPerDay * duration
+    const totalFlightsCost = flightCostPerPerson * numOfTravelers
+
+    const estimateTotal = (totalLodgingCost + totalFlightsCost) * 1.1
+    return estimateTotal
+
+}
