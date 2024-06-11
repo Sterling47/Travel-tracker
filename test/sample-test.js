@@ -60,4 +60,40 @@ describe('travelersFunctions', () => {
       expect(result).to.equal(undefined);
     });
   });
+
+  describe('calculateTotalAmount', () => {
+    it('should return the correct total amount for approved trips for specified user in the current   year', () => {
+      const currentYear = 2022;
+      const userId = 44;
+      const destinationsData = { destinations };
+      const userTrips = findTravelersTrips(userId, trips);
+
+      const combinedTrips = userTrips.past.concat(userTrips.upcoming);
+      const result = calculateTotalAmount(combinedTrips, currentYear, destinationsData);
+      expect(result).to.equal(8195);
+    });
+
+
+    it('should return 0 when trips array is empty', () => {
+      const currentYear = 2022;
+      const destinationsData = { destinations };
+      const result = calculateTotalAmount([], currentYear, destinationsData);
+      expect(result).to.equal(0);
+    });
+
+    it('should return 0 when destinations data is missing or incomplete', () => {
+      const currentYear = 2022;
+      const destinationsData = {};
+      const result = calculateTotalAmount(trips, currentYear, destinationsData);
+      expect(result).to.equal(0);
+    });
+
+    it('should return 0 when no trips are approved in the current year', () => {
+      const currentYear = 2025; 
+      const destinationsData = { destinations };
+      const result = calculateTotalAmount(trips, currentYear, destinationsData);
+      expect(result).to.equal(0);
+    });
+  });
 });
+
