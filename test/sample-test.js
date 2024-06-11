@@ -35,3 +35,29 @@ const destinations = [
   { "id": 10, "destination": "Toronto, Canada", "estimatedLodgingCostPerDay": 90, "estimatedFlightCostPerPerson": 450 }
 ];
 
+describe('travelersFunctions', () => {
+  describe('getTravelerById', () => {
+    it('should return the correct traveler object when a valid ID is provided', () => {
+      const travelersArray = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }];
+      const result = getTravelerById(1, travelersArray);
+      expect(result).to.deep.equal({ id: 1, name: 'John' });
+    });
+
+    it('should return undefined when an invalid ID is provided', () => {
+      const travelersArray = [{ id: 1, name: 'John' }, { id: 2, name: 'Jane' }];
+      const result = getTravelerById(3, travelersArray);
+      expect(result).to.equal(undefined);
+    });
+
+    it('should return undefined when travelersArray is empty', () => {
+      const travelersArray = [];
+      const result = getTravelerById(1, travelersArray);
+      expect(result).to.equal(undefined);
+    });
+
+    it('should return undefined when travelersArray is not provided', () => {
+      const result = getTravelerById(1);
+      expect(result).to.equal(undefined);
+    });
+  });
+});
