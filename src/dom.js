@@ -6,19 +6,17 @@ export const renderTrips = (trips, container, destinationsData) => {
     const currentYear = currentDate.getFullYear()
     trips.forEach(trip => {
         const destination = destinationsData.destinations.find(dest => dest.id === trip.destinationID);
-        const tripDate = new Date(trip.date)
-        const tripYear = tripDate.getFullYear();
         const tripElement = document.createElement('div');
-        tripElement.classList.add('img-bar')
+        tripElement.classList.add('trip-card');
+        tripElement.style.backgroundImage = `url(${destination.image})`;
         tripElement.innerHTML = `
-        <div class='dest-display'>
-        <img class='destination-img' src="${destination.image}" alt="">
-        <p>${destination.destination}</p> 
-        <p>${trip.date} </p>
-        </div>
+            <div class='trip-details'>
+                <h2>${destination.destination}</h2>
+                <p>Date: ${trip.date}</p>
+            </div>
         `;
         container.appendChild(tripElement);
-        totalAmount = calculateTotalAmount(trips, currentYear, destinationsData) 
+        totalAmount = calculateTotalAmount(trips, currentYear, destinationsData);
     });
 
     return totalAmount;
@@ -26,17 +24,14 @@ export const renderTrips = (trips, container, destinationsData) => {
 
 export const displayNewPendingTrip = (data, destinationsData) => {
     const pending = document.getElementById('pending-trips');
-    // console.log(destinationsData)
-    // console.log('data2', data)
     const destination = destinationsData.destinations.find(dest => dest.id === data.newTrip.destinationID);
-    // console.log("dest data", destination)
-    const tripElement = document.createElement('div')
-    tripElement.classList.add('img-bar')
+    const tripElement = document.createElement('div');
+    tripElement.classList.add('trip-card');
+    tripElement.style.backgroundImage = `url(${destination.image})`;
     tripElement.innerHTML = `
-        <div class='dest-display'>
-            <img class='destination-img' src='${destination.image}'>
-            <p>${destination.destination}</p> 
-            <p>${data.newTrip.date}</p>
+        <div class='trip-details'>
+            <h2>${destination.destination}</h2>
+            <p>Date: ${data.newTrip.date}</p>
         </div>
     `;
 
@@ -68,5 +63,4 @@ console.log("estimate:::", estimate)
     estimateBox.innerHTML =`
     <p>Total estimate is for this trip: $${estimate} </p>
     `
-
 }

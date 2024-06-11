@@ -35,15 +35,20 @@
           <h1 id="user-id">Welcome, Traveler!</h1>
         </div>
         <section class="trip-section">
+          <nav class="trip-nav">
+            <button data-target="past-trips" class="active">Past Trips</button>
+            <button data-target="upcoming-trips">Upcoming Trips</button>
+            <button data-target="pending-trips">Pending Trips</button>
+          </nav>
           <article class="trip-bar">
             <h2>PAST TRIPS</h2>
             <div  class="all-trips" id="past-trips"></div>
           </article>
-          <article class="trip-bar">
+          <article class="trip-bar hidden">
             <h2>UPCOMING TRIPS</h2>
             <div class="all-trips" id="upcoming-trips"></div>
           </article>
-          <article class="trip-bar">
+          <article class="trip-bar hidden">
             <h2>PENDING TRIPS</h2>
             <div  class="all-trips" id="pending-trips" ></div>
           </article>
@@ -75,11 +80,9 @@
           <button class="estimate-bttn">Get Estimate</button>
         </form>
         <div class="estimate-box"></div>
+      </div>
     </div>
-    </div>
-
   </main>
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
 </body>
 

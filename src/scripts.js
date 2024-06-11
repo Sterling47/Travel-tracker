@@ -14,8 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const travelForm = document.querySelector('.form-card');
     const newTripForm = document.querySelector('.new-trip-form');
     const estimateButton = document.querySelector('.estimate-bttn')
+    
     let userId;
     let destinationsData;
+    
 
     fetchDestinations()
         .then(destinations => {
