@@ -1,8 +1,15 @@
 export const getTravelerById = (travelersID, travelersArray) => {
+    if (!travelersArray) {
+        return undefined;
+    }
     return travelersArray.find(user => user.id === travelersID);
 }
 
 export const calculateTotalAmount = (trips, currentYear, destinationsData) => {
+    if (!trips || !destinationsData || !destinationsData.destinations) {
+        return 0;
+    }
+
     let totalAmount = 0;
 
     trips.forEach(trip => {
@@ -15,7 +22,7 @@ export const calculateTotalAmount = (trips, currentYear, destinationsData) => {
         }
     });
 
-    return totalAmount;
+    return totalAmount * 1.1;
 };
 
 export const findTravelersTrips = (userId, trips) => {
@@ -43,14 +50,22 @@ export const findTravelersTrips = (userId, trips) => {
     return { past, upcoming, pending };
 }
 
-export const calculateTripEstimate = (destination, numOfTravelers, duration) => {   
+export const calculateTripEstimate = (destination, numOfTravelers, duration) => {
+    if (!destination || !destination.estimatedLodgingCostPerDay || !destination.estimatedFlightCostPerPerson) {
+        return 0;
+    }
+
+    if (numOfTravelers <= 0 || duration <= 0) {
+        return 0;
+    }
+
     const lodgingCostPerDay = destination.estimatedLodgingCostPerDay
     const flightCostPerPerson = destination.estimatedFlightCostPerPerson
 
     const totalLodgingCost = lodgingCostPerDay * duration
     const totalFlightsCost = flightCostPerPerson * numOfTravelers
 
-    const estimateTotal = (totalLodgingCost + totalFlightsCost) * 1.1
-    return estimateTotal
+    const estimateTotal = (totalLodgingCost + totalFlightsCost)
 
+    return estimateTotal * 1.1
 }
