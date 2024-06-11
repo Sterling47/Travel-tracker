@@ -95,5 +95,36 @@ describe('travelersFunctions', () => {
       expect(result).to.equal(0);
     });
   });
+  describe('findTravelersTrips', () => {
+    it('should return an object with past, upcoming, and pending trips for a given user ID', () => {
+      const userId = 9;
+      const result = findTravelersTrips(userId, trips);
+      expect(result).to.deep.equal({
+        past: [],
+        upcoming: [
+          { "id": 10, "userID": 9, "destinationID": 10, "travelers": 6, "date": "2022/07/23", "duration": 17, "status": "approved", "suggestedActivities": [] }
+        ],
+        pending: []
+      });
+    });
+
+    it('should return empty arrays for all categories if the user has no trips', () => {
+      const userId = 599;
+      const result = findTravelersTrips(userId, trips);
+      expect(result).to.deep.equal({ past: [], upcoming: [], pending: [] });
+    });
+
+    it('should return empty arrays for all categories if trips array is empty', () => {
+      const userId = 44;
+      const result = findTravelersTrips(userId, []);
+      expect(result).to.deep.equal({ past: [], upcoming: [], pending: [] });
+    });
+
+    it('should return empty arrays for all categories if no trips match the user ID', () => {
+      const userId = 599;
+      const result = findTravelersTrips(userId, trips);
+      expect(result).to.deep.equal({ past: [], upcoming: [], pending: [] });
+    });
+  });
 });
 
