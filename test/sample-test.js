@@ -95,6 +95,7 @@ describe('travelersFunctions', () => {
       expect(result).to.equal(0);
     });
   });
+  
   describe('findTravelersTrips', () => {
     it('should return an object with past, upcoming, and pending trips for a given user ID', () => {
       const userId = 9;
@@ -124,6 +125,40 @@ describe('travelersFunctions', () => {
       const userId = 599;
       const result = findTravelersTrips(userId, trips);
       expect(result).to.deep.equal({ past: [], upcoming: [], pending: [] });
+    });
+  });
+
+  describe('calculateTripEstimate', () => {
+    it('should return the correct trip estimate based on the provided destination, number of travelers, and duration', () => {
+      const destination = destinations[0];
+      const numOfTravelers = 2;
+      const duration = 5;
+      const result = calculateTripEstimate(destination, numOfTravelers, duration);
+      expect(result).to.equal(1265);
+    });
+
+    it('should return 0 if destination data is missing or incomplete', () => {
+      const destination = { id: 20 };
+      const numOfTravelers = 2;
+      const duration = 5;
+      const result = calculateTripEstimate(destination, numOfTravelers, duration);
+      expect(result).to.equal(0);
+    });
+
+    it('should handle zero or negative number of travelers or duration', () => {
+      const destination = destinations[0];
+      const numOfTravelers = 0;
+      const duration = -5;
+      const result = calculateTripEstimate(destination, numOfTravelers, duration);
+      expect(result).to.equal(0);
+    });
+
+    it('should handle missing destination data', () => {
+      const destination = null;
+      const numOfTravelers = 2;
+      const duration = 5;
+      const result = calculateTripEstimate(destination, numOfTravelers, duration);
+      expect(result).to.equal(0);
     });
   });
 });
