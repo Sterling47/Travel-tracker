@@ -13,6 +13,7 @@ export const renderTrips = (trips, container, destinationsData) => {
             <div class='trip-details'>
                 <h2>${destination.destination}</h2>
                 <p>Date: ${trip.date}</p>
+                
             </div>
         `;
         container.appendChild(tripElement);

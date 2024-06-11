@@ -1,6 +1,5 @@
 import './css/styles.css';
-
-import { fetchDestinations, fetchTripsData, submitNewTrip } from './apiCalls';
+import { fetchDestinations, fetchTripsData, submitNewTrip, fetchTravelerById } from './apiCalls';
 import { findTravelersTrips } from './travelerFunctions';
 import { destinationOptions, displayTotalEstimate, renderTrips } from './dom';
 
@@ -33,12 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
         userId = username.slice(8);
 
         if (userId && password === 'travel') {
-            loginForm.parentElement.classList.add('hidden');
-            dashboard.classList.remove('hidden');
-            travelForm.classList.remove('hidden');
-            userIdElement.innerText = `Hi, ${username}`;
-            fetchTravelersData(userId);
-
+            fetchTravelerById(userId)
+                .then(traveler => {
+                    loginForm.parentElement.classList.add('hidden');
+                    dashboard.classList.remove('hidden');
+                    travelForm.classList.remove('hidden');
+                    userIdElement.innerText = `Hi, ${traveler.name}`;
+                    fetchTravelersData(userId);
+                })
+                .catch(error => {
+                    alert('Invalid username or password');
+                });
         } else {
             alert('Invalid username or password');
         }
@@ -73,4 +77,17 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => console.error('Error fetching trip data:', error));
     }
+
+    const buttons = document.querySelectorAll('.trip-nav button');
+    const sections = document.querySelectorAll('.trip-bar');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active'); 
+        sections.forEach(section => section.classList.add('hidden'));
+        const targetId = button.getAttribute('data-target') + '-section';
+        document.getElementById(targetId).classList.remove('hidden');
+      });
+    });
 });

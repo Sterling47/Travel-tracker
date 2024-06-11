@@ -36,21 +36,21 @@
         </div>
         <section class="trip-section">
           <nav class="trip-nav">
-            <button data-target="past-trips" class="active">Past Trips</button>
-            <button data-target="upcoming-trips">Upcoming Trips</button>
-            <button data-target="pending-trips">Pending Trips</button>
+            <button id="past-trips-button" data-target="past-trips" class="active">Past Trips</button>
+            <button id="upcoming-trips-button" data-target="upcoming-trips">Upcoming Trips</button>
+            <button id="pending-trips-button" data-target="pending-trips">Pending Trips</button>
           </nav>
-          <article class="trip-bar">
-            <h2>PAST TRIPS</h2>
-            <div  class="all-trips" id="past-trips"></div>
+          <article class="trip-bar" id="past-trips-section">
+            <h2 class="trip-header">PAST TRIPS</h2>
+            <div class="all-trips" id="past-trips"></div>
           </article>
-          <article class="trip-bar hidden">
-            <h2>UPCOMING TRIPS</h2>
+          <article class="trip-bar hidden" id="upcoming-trips-section">
+            <h2 class="trip-header">UPCOMING TRIPS</h2>
             <div class="all-trips" id="upcoming-trips"></div>
           </article>
-          <article class="trip-bar hidden">
-            <h2>PENDING TRIPS</h2>
-            <div  class="all-trips" id="pending-trips" ></div>
+          <article class="trip-bar hidden" id="pending-trips-section">
+            <h2 class="trip-header" >PENDING TRIPS</h2>
+            <div class="all-trips" id="pending-trips"></div>
           </article>
         </section>
         <div class="total-amount">

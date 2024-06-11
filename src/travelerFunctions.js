@@ -30,7 +30,7 @@ export const findTravelersTrips = (userId, trips) => {
     const upcoming = [];
     const pending = [];
 
-    const currentDate = new Date('2022/06/12');
+    const currentDate = new Date('2022/03/12');
 
     trips.forEach(trip => {
         if (trip.userID === userId) {
