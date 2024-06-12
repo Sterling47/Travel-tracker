@@ -59,7 +59,6 @@ export const displayTotalEstimate = (e, destinationsData) => {
     const selectedDestination = destinationsData.destinations.find(dest => dest.id === destinationId);
 
     const estimate = calculateTripEstimate(selectedDestination, numOfTravelers, duration);
-console.log("estimate:::", estimate)
 
     estimateBox.innerHTML =`
     <p>Total estimate is for this trip: $${estimate} </p>

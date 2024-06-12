@@ -44,7 +44,7 @@ export const submitNewTrip = (e, userId, destinationsData) => {
    
     e.preventDefault();
     const formElement = e.target;
-    const formData = new FormData(formElement);
+    const estimateBox = document.querySelector('.estimate-box')
     const newTripObj = {
         id: Date.now(),
         userID: userId, 
@@ -56,9 +56,14 @@ export const submitNewTrip = (e, userId, destinationsData) => {
         suggestedActivities: ['activities']
     };
 
-    // console.log('newTRIPOBJ:::::',newTripObj);
     bookNewTrip(newTripObj)
-        .then(data => displayNewPendingTrip(data, destinationsData))
+        .then(data =>{
+            displayNewPendingTrip(data, destinationsData)
+            formElement.reset();
+            estimateBox.innerHTML = `
+            <p>Your Trip was sent to the travel agent for approval!</p>
+            `;
+        })
         .catch(error => {
             console.error('Error:', error);
         }); 
