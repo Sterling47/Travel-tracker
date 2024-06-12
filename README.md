@@ -7,6 +7,8 @@ Travel Tracker is a webpage that connects users to the trip information with Air
   5. run npm install
   6. run npm start
   7. api back end should be up and running
+  ## Deploy
+  [Travel-Tracker](https://sterling47.github.io/Travel-tracker/)
 ## Technolgies
   - CSS
   - HTML
