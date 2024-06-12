@@ -62,15 +62,15 @@
           <h2>BOOK A TRIP!</h2>
           <div>
             <label for="trip-date">Select your trip date:</label>
-            <input required type="date" id="trip-date" name="trip-date">
+            <input required max=50 type="date" id="trip-date" name="trip-date">
           </div>
           <div>
             <label for="duration">Number of Days:</label>
-            <input required type="number" id="duration" name="duration">
+            <input required min="0" type="number" id="duration" name="duration">
           </div>
           <div>
             <label for="num-of-travelers">Number of Party:</label>
-            <input required type="number" id="num-of-travelers" name="num-of-travelers">
+            <input required min="0" type="number" id="num-of-travelers" name="num-of-travelers">
           </div>
           <div>
             <label for="destinations-list">Destinations:</label>

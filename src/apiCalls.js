@@ -1,5 +1,3 @@
-// import { displayNewPendingTrip } from "./dom";
-
 import { displayNewPendingTrip } from "./dom";
 
 export function fetchData() {
