@@ -10,7 +10,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
     rel="stylesheet">
-  <title>Webpack Starter Kit</title>
+  <title>AirAkrazy</title>
 </head>
 
 <body>
@@ -49,7 +49,7 @@
             <div class="all-trips" id="upcoming-trips"></div>
           </article>
           <article class="trip-bar hidden" id="pending-trips-section">
-            <h2 class="trip-header" >PENDING TRIPS</h2>
+            <h2 class="trip-header">PENDING TRIPS</h2>
             <div class="all-trips" id="pending-trips"></div>
           </article>
         </section>
@@ -62,15 +62,15 @@
           <h2>BOOK A TRIP!</h2>
           <div>
             <label for="trip-date">Select your trip date:</label>
-            <input required type="date" id="trip-date" name="trip-date">
+            <input required max=50 type="date" id="trip-date" name="trip-date">
           </div>
           <div>
             <label for="duration">Number of Days:</label>
-            <input required type="number" id="duration" name="duration">
+            <input required min="0" type="number" id="duration" name="duration">
           </div>
           <div>
             <label for="num-of-travelers">Number of Party:</label>
-            <input required type="number" id="num-of-travelers" name="num-of-travelers">
+            <input required min="0" type="number" id="num-of-travelers" name="num-of-travelers">
           </div>
           <div>
             <label for="destinations-list">Destinations:</label>
