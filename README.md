@@ -15,7 +15,7 @@ Travel Tracker is a webpage that connects users to the trip information with Air
   - WebPack
   - Mocha/Chai Testing suite and assertation library
 ## Preview
-![alt text](src/images/travel-tracker.GIF)
+![alt text](src/images/traveltracker2.GIF)
   
 ## Contributers
   - Adam Konber
